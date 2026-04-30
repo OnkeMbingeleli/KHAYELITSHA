@@ -1,4 +1,5 @@
 # Taxi Management System
+A taxi association management platform for route, vehicle, and operational load tracking in Cape Town and Khayelitsha.
 
 ## Project Overview
 A full-stack web application for managing taxi operations in associations, ensuring fair distribution of pickups and providing secure data management.
