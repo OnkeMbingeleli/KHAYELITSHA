@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Record Pickup</h1>
+<form method="POST">
+    <label for="number_plate">Number Plate:</label>
+    <input type="text" id="number_plate" name="number_plate" required><br>
+    <label for="rank">Rank:</label>
+    <input type="text" id="rank" name="rank" required><br>
+    <button type="submit">Record</button>
+</form>
+{% endblock %}

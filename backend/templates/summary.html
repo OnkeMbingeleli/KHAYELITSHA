@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Daily Summary for {{ current_user.route }}</h1>
+<h2>Pickups:</h2>
+<ul>
+    {% for pickup in pickups %}
+        <li>{{ pickup.number_plate }} at {{ pickup.rank }} on {{ pickup.timestamp }}</li>
+    {% endfor %}
+</ul>
+<p>Total loads today: {{ total_loads }}</p>
+{% endblock %}

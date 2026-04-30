@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <!-- Login Section -->
+        <div id="login-section" class="section">
+            <div class="card">
+                <h1>Taxi Management System</h1>
+                <h2>Marshal Login</h2>
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Username" class="input">
+                    <input type="password" id="password" placeholder="Password" class="input">
+                    <button onclick="login()" class="btn btn-primary">Login</button>
+                </div>
+                <p id="login-message" class="message"></p>
+                <hr>
+                <p class="small-text">Demo Credentials:</p>
+                <p class="small-text">• marshal1 / pass (Cape Town)</p>
+                <p class="small-text">• marshal2 / pass (Durban)</p>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div id="main-section" style="display:none;" class="section">
+            <div class="header">
+                <h1>Taxi Management System</h1>
+                <p>Welcome, <strong id="user-name"></strong> | Route: <strong id="user-route"></strong></p>
+                <button onclick="logout()" class="btn btn-danger float-right">Logout</button>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('record')">Record Pickup</button>
+                <button class="tab-btn" onclick="showTab('summary')">Summary</button>
+                <button class="tab-btn" onclick="showTab('report')">Daily Report</button>
+            </div>
+
+            <!-- Record Pickup Tab -->
+            <div id="record" class="tab-content">
+                <div class="card">
+                    <h2>Record Vehicle Pickup</h2>
+                    <div class="form-group">
+                        <input type="text" id="plate" placeholder="Vehicle Number Plate (e.g., CA123WP)" class="input">
+                        <input type="text" id="rank" placeholder="Pickup Rank (e.g., Somerset, Kweza)" class="input">
+                        <button onclick="recordPickup()" class="btn btn-primary">Record Pickup</button>
+                    </div>
+                    <p id="record-message" class="message"></p>
+                </div>
+            </div>
+
+            <!-- Summary Tab -->
+            <div id="summary" class="tab-content" style="display:none;">
+                <div class="card">
+                    <h2>Daily Summary</h2>
+                    <div id="summary-stats" class="stats">
+                        <div class="stat-box">
+                            <h3 id="total-loads">0</h3>
+                            <p>Total Loads</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3 id="rank-count">0</h3>
+                            <p>Ranks Used</p>
+                        </div>
+                    </div>
+                    <h3>Pickups by Rank</h3>
+                    <div id="rank-summary" class="list"></div>
+                    <h3>All Pickups</h3>
+                    <div id="pickups-list" class="list"></div>
+                </div>
+            </div>
+
+            <!-- Daily Report Tab -->
+            <div id="report" class="tab-content" style="display:none;">
+                <div class="card">
+                    <h2>Daily Report</h2>
+                    <div id="vehicle-report" class="report"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
