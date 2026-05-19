@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Welcome, {{ current_user.name }}!</h1>
+<p>Route: {{ current_user.route }}</p>
+<p>Use the navigation to record pickups or view summaries.</p>
+{% endblock %}
