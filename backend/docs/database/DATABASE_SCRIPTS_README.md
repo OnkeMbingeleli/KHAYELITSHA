@@ -19,30 +19,24 @@ sqlite3 taxi_system.db < COMPLETE_DATABASE_SETUP.sql
 mysql -u username -p < COMPLETE_DATABASE_SETUP.sql
 ```
 
-### 2. `CREATE_DATABASE_COMPLETE.sql`
-**Purpose**: Database creation with full schema
-- Includes `CREATE DATABASE` and `USE` statements
-- Complete table structure with constraints
-- Indexes and views for performance
-
-### 3. `ENHANCED_SEED_DATA.sql`
+### 2. `ENHANCED_SEED_DATA.sql`
 **Purpose**: Comprehensive sample data
 - Multiple branches, users, owners, vehicles
 - Sample operational data (load records, inspections, reports)
 - Realistic test data for development
 
-### 4. `COMPREHENSIVE_SQL_REFERENCE.sql`
+### 3. `COMPREHENSIVE_SQL_REFERENCE.sql`
 **Purpose**: Essential queries for system operation
 - 30+ categorized SQL queries
 - Dashboard analytics, reporting, maintenance
 - Search, export, and utility queries
 
-### 5. `CREATE_DATABASE_BASIC.sql`
+### 4. `CREATE_DATABASE_BASIC.sql`
 **Purpose**: Minimal database creation
 - Basic `CREATE DATABASE` and `USE` statements
 - Reference for custom schema implementation
 
-### 6. `DATABASE_SETUP_GUIDE.sql`
+### 5. `DATABASE_SETUP_GUIDE.sql`
 **Purpose**: Step-by-step setup instructions
 - Detailed setup process
 - SQLite and MySQL/MariaDB compatibility
@@ -59,7 +53,7 @@ sqlite3 taxi_system.db < COMPLETE_DATABASE_SETUP.sql
 ### Option 2: Step-by-Step Setup
 ```bash
 # 1. Create database with schema
-sqlite3 taxi_system.db < CREATE_DATABASE_COMPLETE.sql
+sqlite3 taxi_system.db < COMPLETE_DATABASE_SETUP.sql
 
 # 2. Add sample data
 sqlite3 taxi_system.db < ENHANCED_SEED_DATA.sql

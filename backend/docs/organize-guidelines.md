@@ -22,6 +22,6 @@ mkdir supabase\migrations
 mkdir docs\proposals
 
 # move SQL files into migrations
-mv .\CREATE_DATABASE_COMPLETE.sql .\supabase\migrations\
+mv .\COMPLETE_DATABASE_SETUP.sql .\supabase\migrations\
 mv .\ENHANCED_SEED_DATA.sql .\supabase\migrations\
 ```

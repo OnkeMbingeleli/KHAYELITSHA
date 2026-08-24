@@ -9,42 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SubheadRouteImport } from './routes/subhead'
-import { Route as RegisterOwnerRouteImport } from './routes/register-owner'
-import { Route as PatrollerRouteImport } from './routes/patroller'
-import { Route as MarshalRouteImport } from './routes/marshal'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MarshalRouteImport } from './routes/marshal'
+import { Route as PatrollerRouteImport } from './routes/patroller'
+import { Route as RegisterOwnerRouteImport } from './routes/register-owner'
+import { Route as SubheadRouteImport } from './routes/subhead'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
-import { Route as AdminTeamRouteImport } from './routes/admin/team'
-import { Route as AdminSubheadsRouteImport } from './routes/admin/subheads'
-import { Route as AdminPatrolRouteImport } from './routes/admin/patrol'
 import { Route as AdminOwnersRouteImport } from './routes/admin/owners'
+import { Route as AdminPatrolRouteImport } from './routes/admin/patrol'
+import { Route as AdminSubheadsRouteImport } from './routes/admin/subheads'
+import { Route as AdminTeamRouteImport } from './routes/admin/team'
 
-const SubheadRoute = SubheadRouteImport.update({
-  id: '/subhead',
-  path: '/subhead',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RegisterOwnerRoute = RegisterOwnerRouteImport.update({
-  id: '/register-owner',
-  path: '/register-owner',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PatrollerRoute = PatrollerRouteImport.update({
-  id: '/patroller',
-  path: '/patroller',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MarshalRoute = MarshalRouteImport.update({
-  id: '/marshal',
-  path: '/marshal',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -52,9 +32,29 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarshalRoute = MarshalRouteImport.update({
+  id: '/marshal',
+  path: '/marshal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatrollerRoute = PatrollerRouteImport.update({
+  id: '/patroller',
+  path: '/patroller',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterOwnerRoute = RegisterOwnerRouteImport.update({
+  id: '/register-owner',
+  path: '/register-owner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubheadRoute = SubheadRouteImport.update({
+  id: '/subhead',
+  path: '/subhead',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -62,14 +62,9 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminTeamRoute = AdminTeamRouteImport.update({
-  id: '/team',
-  path: '/team',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminSubheadsRoute = AdminSubheadsRouteImport.update({
-  id: '/subheads',
-  path: '/subheads',
+const AdminOwnersRoute = AdminOwnersRouteImport.update({
+  id: '/owners',
+  path: '/owners',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminPatrolRoute = AdminPatrolRouteImport.update({
@@ -77,9 +72,14 @@ const AdminPatrolRoute = AdminPatrolRouteImport.update({
   path: '/patrol',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminOwnersRoute = AdminOwnersRouteImport.update({
-  id: '/owners',
-  path: '/owners',
+const AdminSubheadsRoute = AdminSubheadsRouteImport.update({
+  id: '/subheads',
+  path: '/subheads',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTeamRoute = AdminTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
   getParentRoute: () => AdminRoute,
 } as any)
 
@@ -181,39 +181,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/subhead': {
-      id: '/subhead'
-      path: '/subhead'
-      fullPath: '/subhead'
-      preLoaderRoute: typeof SubheadRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/register-owner': {
-      id: '/register-owner'
-      path: '/register-owner'
-      fullPath: '/register-owner'
-      preLoaderRoute: typeof RegisterOwnerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/patroller': {
-      id: '/patroller'
-      path: '/patroller'
-      fullPath: '/patroller'
-      preLoaderRoute: typeof PatrollerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/marshal': {
-      id: '/marshal'
-      path: '/marshal'
-      fullPath: '/marshal'
-      preLoaderRoute: typeof MarshalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -223,11 +195,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marshal': {
+      id: '/marshal'
+      path: '/marshal'
+      fullPath: '/marshal'
+      preLoaderRoute: typeof MarshalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patroller': {
+      id: '/patroller'
+      path: '/patroller'
+      fullPath: '/patroller'
+      preLoaderRoute: typeof PatrollerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register-owner': {
+      id: '/register-owner'
+      path: '/register-owner'
+      fullPath: '/register-owner'
+      preLoaderRoute: typeof RegisterOwnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subhead': {
+      id: '/subhead'
+      path: '/subhead'
+      fullPath: '/subhead'
+      preLoaderRoute: typeof SubheadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -237,18 +237,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/team': {
-      id: '/admin/team'
-      path: '/team'
-      fullPath: '/admin/team'
-      preLoaderRoute: typeof AdminTeamRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/subheads': {
-      id: '/admin/subheads'
-      path: '/subheads'
-      fullPath: '/admin/subheads'
-      preLoaderRoute: typeof AdminSubheadsRouteImport
+    '/admin/owners': {
+      id: '/admin/owners'
+      path: '/owners'
+      fullPath: '/admin/owners'
+      preLoaderRoute: typeof AdminOwnersRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/patrol': {
@@ -258,11 +251,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPatrolRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/owners': {
-      id: '/admin/owners'
-      path: '/owners'
-      fullPath: '/admin/owners'
-      preLoaderRoute: typeof AdminOwnersRouteImport
+    '/admin/subheads': {
+      id: '/admin/subheads'
+      path: '/subheads'
+      fullPath: '/admin/subheads'
+      preLoaderRoute: typeof AdminSubheadsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/team': {
+      id: '/admin/team'
+      path: '/team'
+      fullPath: '/admin/team'
+      preLoaderRoute: typeof AdminTeamRouteImport
       parentRoute: typeof AdminRoute
     }
   }
@@ -298,3 +298,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

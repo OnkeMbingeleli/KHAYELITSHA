@@ -21,30 +21,47 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [roles, setRoles] = useState<AppRole[]>([]);
   const [loading, setLoading] = useState(true);
+  const [rolesLoading, setRolesLoading] = useState(true);
 
   useEffect(() => {
+    let mounted = true;
+
+    async function loadRoles(userId: string) {
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userId);
+      if (!mounted) return;
+      setRoles((data ?? []).map((r) => r.role as AppRole));
+      setRolesLoading(false);
+    }
+
     const { data: sub } = supabase.auth.onAuthStateChange((_e, sess) => {
       setSession(sess);
       setUser(sess?.user ?? null);
       if (sess?.user) {
-        // defer
-        setTimeout(async () => {
-          const { data } = await supabase
-            .from("user_roles")
-            .select("role")
-            .eq("user_id", sess.user.id);
-          setRoles((data ?? []).map((r) => r.role as AppRole));
-        }, 0);
+        setRolesLoading(true);
+        void loadRoles(sess.user.id);
       } else {
         setRoles([]);
+        setRolesLoading(false);
       }
     });
     supabase.auth.getSession().then(({ data }) => {
+      if (!mounted) return;
       setSession(data.session);
       setUser(data.session?.user ?? null);
       setLoading(false);
+      if (data.session?.user) {
+        void loadRoles(data.session.user.id);
+      } else {
+        setRolesLoading(false);
+      }
     });
-    return () => sub.subscription.unsubscribe();
+    return () => {
+      mounted = false;
+      sub.subscription.unsubscribe();
+    };
   }, []);
 
   const isAdmin = roles.includes("super_admin");
@@ -55,7 +72,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       value={{
         user,
         session,
-        loading,
+        loading: loading || rolesLoading,
         roles,
         isStaff,
         isAdmin,
